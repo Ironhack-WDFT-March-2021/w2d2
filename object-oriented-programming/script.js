@@ -113,6 +113,7 @@ console.clear();
 //     }
 // }
 
+// this class now holds the common properties and methods from bird and cat
 class Animal {
     constructor(name, color, sound) {
         this.name = name;
@@ -125,14 +126,18 @@ class Animal {
     }
 }
 
+// to inherit from a class we need the keyword 'extends'
 class Cat extends Animal {
     constructor(name, color, sound, numberOfLives) {
+        // those arguments need to be passed to the parent constructor
         super(name, color, sound);
         this.numberOfLives = numberOfLives;
     }
+    // this is overriding the method 'makeSound' from animal
     makeSound() {
-        // console.log(this.sound);
-        super.makeSound();
+        // if we wanna call the parent method explicitly we could do it like that
+        // super.makeSound();
+        // more common is to define our own logic
         return 'and another sound'
     }
 
@@ -150,4 +155,5 @@ class Bird extends Animal {
     }
 }
 const bird = new Bird('pete', 'yellow', 'peep');
+// we can call makeSound in bird bc we inherit that from the class animal
 bird.makeSound();
